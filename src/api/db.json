@@ -1,0 +1,245 @@
+{
+    "sliders": [
+        {
+            "id": 1,
+            "title": "IPHONE 13 Seriyası tezliklə",
+            "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            "src": "https://www.apple.com/newsroom/images/product/iphone/standard/apple_iphone-12-spring21_lp_us_04202021.jpg.landing-big_2x.jpg",
+            "status": 0
+        },
+        {
+            "id": 2,
+            "title": "RTX 3090 70% Endirimlə",
+            "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            "src": "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/community/wallpapers/geforce-gtx-1080/GTX1080-Wallpaper-FINAL-850px.jpg",
+            "status": 0
+        }
+    ],
+    "categories":[
+        {
+            "id":1,
+            "title":"Accesories",
+            "children":[
+                {
+                    "id":1,
+                    "title":"Salam",
+                    "slug":"salam",
+                    "children":[
+                        {
+                            "id":1,
+                            "title":"Third",
+                            "slug":"third"
+                        }
+                    ]
+                },
+                {
+                    "id":2,
+                    "title":"Salam"
+                },
+                {
+                    "id":3,
+                    "title":"Salam"
+                },
+                {
+                    "id":4,
+                    "title":"Salam"
+                }
+
+            ],
+            "slug":"accesories"
+        },
+        {
+            "id":2,
+            "title":"Smartphone",
+            "slug":"smartphone"
+        },
+        {
+            "id":3,
+            "title":"Computer",
+            "slug":"computer"
+        },
+        {
+            "id":4,
+            "title":"Gaming Equipments",
+            "slug":"gaming-equipments"
+        },
+        {
+            "id":5,
+            "title":"TV & Monitors",
+            "slug":"tv-monitors"
+        },
+        {
+            "id":6,
+            "title":"Headphones",
+            "slug":"headphones"
+        }
+    ],
+    "products": [
+        {
+            "id": 1,
+            "title": "iPhone 13 128 GB White",
+            "title_alt": "Apple",
+            "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            "price": "2750.10",
+            "categoriesId":2,
+            "colors": [
+                {
+                    "id": 1,
+                    "_color": "black"
+                },
+                {
+                    "id": 2,
+                    "_color": "#f58142"
+                }
+            ],
+            "models": [
+                {
+                    "id": 1,
+                    "title":"64 GB",
+                    "content":"2.4 GHZ Quad Core 8GB Ram | 512 GB SSD"
+                },
+                {
+                    "id": 2,
+                    "title":"128 GB",
+                    "content":"2.4 GHZ Quad Core 8GB Ram | 512 GB SSD"
+                },
+                {
+                    "id": 3,
+                    "title":"256 GB",
+                    "content":"2.4 GHZ Quad Core 8GB Ram | 512 GB SSD"
+                }
+            ],
+            "galleries":[
+                {
+                    "id":1,
+                    "src":"https://irshad.az/resized/resize1400/center/products/44264/31d69808fbe58447fffc831bf137bf81.jpg"
+                },
+                {
+                    "id":2,
+                    "src":"https://irshad.az/resized/fit540x550/center/products/44280/a888f5c2bb16f0c6c5e22dc7b713274d.jpg"
+                },
+                {
+                    "id":3,
+                    "src":"https://irshad.az/resized/fit540x550/center/products/44280/efee76a02e145be1f55bb8663ceae448.jpg"
+                },
+                {
+                    "id":4,
+                    "src":"https://irshad.az/resized/fit540x550/center/products/44280/da25c256240c456ed234044f441cc719.jpg"
+                },
+                {
+                    "id":5,
+                    "src":"https://irshad.az/resized/fit540x550/center/products/44280/a888f5c2bb16f0c6c5e22dc7b713274d.jpg"
+                }
+            ],
+            "in_stock": true
+        },
+        {
+            "id": 2,
+            "title": "Samsung Galaxy A53 5G 128GB Black",
+            "title_alt": "Samsung",
+            "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            "price": "919.99",
+            "categoriesId":2,
+            "colors": [
+                {
+                    "id": 1,
+                    "_color": "black"
+                },
+                {
+                    "id": 2,
+                    "_color": "#f58142"
+                }
+            ],
+            "models": [
+                {
+                    "id": 1,
+                    "title":"64 GB",
+                    "content":"2.4 GHZ Quad Core 8GB Ram | 512 GB SSD"
+                },
+                {
+                    "id": 2,
+                    "title":"128 GB",
+                    "content":"2.4 GHZ Quad Core 8GB Ram | 512 GB SSD"
+                },
+                {
+                    "id": 3,
+                    "title":"256 GB",
+                    "content":"2.4 GHZ Quad Core 8GB Ram | 512 GB SSD"
+                }
+            ],
+            "galleries":[
+                {
+                    "id":1,
+                    "src":"https://irshad.az/resized/resize315/center/products/75210/a536-black.jpg"
+                },
+                {
+                    "id":2,
+                    "src":"https://irshad.az/resized/fit540x550/center/products/75210/a536-black2.jpg"
+                },
+                {
+                    "id":3,
+                    "src":"https://irshad.az/resized/fit540x550/center/products/75210/a536-black3.jpg"
+                },
+                {
+                    "id":4,
+                    "src":"https://irshad.az/resized/fit540x550/center/products/75210/a536-black4.jpg"
+                },
+                {
+                    "id":5,
+                    "src":"https://irshad.az/resized/fit540x550/center/products/75210/a536-black5.jpg"
+                }
+            ],
+            "in_stock": true
+        },
+        {
+            "id": 4,
+            "title": "Apple Watch Series 6 44mm Silver",
+            "title_alt": "Apple",
+            "content":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            "price": "2750",
+            "categoriesId":2,
+            "colors": [
+                {
+                    "id": 1,
+                    "_color": "black"
+                },
+                {
+                    "id": 2,
+                    "_color": "#f58142"
+                }
+            ],
+            "models": [
+                {
+                    "id": 1,
+                    "title":"64 GB",
+                    "content":"2.4 GHZ Quad Core 8GB Ram | 512 GB SSD"
+                },
+                {
+                    "id": 2,
+                    "title":"128 GB",
+                    "content":"2.4 GHZ Quad Core 8GB Ram | 512 GB SSD"
+                },
+                {
+                    "id": 3,
+                    "title":"256 GB",
+                    "content":"2.4 GHZ Quad Core 8GB Ram | 512 GB SSD"
+                }
+            ],
+            "galleries":[
+                {
+                    "id":1,
+                    "src":"https://irshad.az/resized/fit540x550/center/products/45484/new-project.png"
+                },
+                {
+                    "id":2,
+                    "src":"https://irshad.az/resized/fit540x550/center/products/45484/m00d3-2-429x419far-efe.jpg"
+                },
+                {
+                    "id":3,
+                    "src":"https://irshad.az/resized/fit540x550/center/products/45484/aw6-silver3.jpg"
+                }
+            ],
+            "in_stock": true
+        }
+    ]
+}
