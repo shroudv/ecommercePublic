@@ -1,5 +1,6 @@
 @import url(https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css);
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600&display=swap');
+
 :root {
     --dark-color: #292929;
     --primary-color: rgb(229 122 0)
@@ -24,7 +25,7 @@ h3,
 h4,
 h5,
 h6,
-p{
+p {
     margin: 0;
 }
 
@@ -32,12 +33,16 @@ h3 {
     font-weight: 600;
 }
 
-
-.wrapper{
-    margin-top: 15px;
+.alert {
+    font-size: 15px !important;
 }
 
-.justify-content-space-between{
+.wrapper {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.justify-content-space-between {
     justify-content: space-between;
 }
 
@@ -72,6 +77,7 @@ h3 {
         height: 0;
         opacity: 0;
     }
+
     4.9% {
         top: 36px;
         left: 36px;
@@ -79,6 +85,7 @@ h3 {
         height: 0;
         opacity: 0;
     }
+
     5% {
         top: 36px;
         left: 36px;
@@ -86,6 +93,7 @@ h3 {
         height: 0;
         opacity: 1;
     }
+
     100% {
         top: 0px;
         left: 0px;
@@ -217,7 +225,7 @@ input::-webkit-inner-spin-button {
     display: flex;
     justify-content: space-between;
     line-height: 38px;
-    padding: 0px 30px;
+    /* padding: 0px 30px; */
     margin: 0 auto;
 }
 
@@ -234,11 +242,11 @@ input::-webkit-inner-spin-button {
 .header .navbar {
     padding-top: 30px;
     padding-bottom: 0;
+    gap: 20px;
 }
 
 .header .navbar .brand {
-    width: 225px;
-    padding-right: 35px;
+    width: 185px;
 }
 
 .header .navbar .brand img {
@@ -249,7 +257,7 @@ input::-webkit-inner-spin-button {
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    width: 55%;
+    flex: 1;
     align-items: center;
 }
 
@@ -404,19 +412,14 @@ input::-webkit-inner-spin-button {
     flex-wrap: wrap;
     max-height: 600px;
     overflow-y: scroll;
-    /* grid-gap: 3px; */
-    grid-template-columns: repeat(auto-fill,minmax(270px,15fr));
-    grid-auto-rows: 60px;
-
+    grid-template-columns: repeat(auto-fill, minmax(340px, 15fr));
 }
 
 .header .sub-menu .smenu-column {
     width: 100%;
     grid-gap: 10px;
-    grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
-    grid-auto-rows: 40px;
-    grid-row-end: span 9;
-
+    grid-template-columns: repeat(auto-fill, minmax(203px, 1fr));
+    margin-bottom: 25px;
 }
 
 .header .sub-menu .smenu-column .smenuTitle {
@@ -479,6 +482,7 @@ input::-webkit-inner-spin-button {
     from {
         opacity: 0
     }
+
     to {
         opacity: 1
     }
@@ -522,7 +526,7 @@ input::-webkit-inner-spin-button {
     height: 500px;
     position: absolute;
     border-radius: 10px;
-    object-fit: cover;  
+    object-fit: cover;
     opacity: 0.4;
     z-index: -1;
     cursor: default;
@@ -796,13 +800,16 @@ input::-webkit-inner-spin-button {
     width: 100%;
     flex-direction: row-reverse;
     justify-content: space-between;
+    align-items: center;
 }
 
 .productSingle .galleries .main {
     display: block;
-    width: 75%;
-    padding: 50px;
+    flex: 1;
+    padding: 31px;
 }
+
+
 
 .productSingle .galleries .thumbs {
     width: 25%;
@@ -1016,6 +1023,7 @@ footer {
 
 .footerUp {
     display: flex;
+    flex-wrap: wrap;
     margin: 70px 0px;
     justify-content: space-between;
 }
@@ -1148,11 +1156,11 @@ footer p {
     border-radius: 10px;
     padding: 15px;
     cursor: pointer;
-    /* height: 100%; */
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    gap: 30px !important;
     justify-content: space-between;
 }
 
@@ -1161,14 +1169,28 @@ footer p {
     box-shadow: rgb(50 50 93 / 25%) 0px 2px 5px -1px, rgb(0 0 0 / 30%) 0px 1px 3px -1px;
 }
 
+.basketProduct .productHead {
+    display: flex;
+    align-items: center;
+}
+
+.basketProduct .productAction {
+    display: flex;
+    align-items: center;
+}
+
 .basketProduct .productCover {
-    width: 9%;
+    width: 14%;
     margin: 0;
     padding: 0;
 }
 
-.basketProduct .productDetails {
-    width: 26%;
+
+.basketProduct .productAction {
+    display: flex;
+    width: 80%;
+    gap: 45px;
+    justify-content: flex-end;
 }
 
 .basketProduct .productPrice h5 {
@@ -1177,9 +1199,12 @@ footer p {
 }
 
 .basketProduct .quantitySide {
-    width: 22%;
     padding: 0;
     margin: 0;
+}
+
+.basketProduct .productPrice {
+    width: 100%;
 }
 
 .basketProduct .productCover img {
@@ -1251,7 +1276,7 @@ footer p {
 
 
 
-.barSide{
+.barSide {
     /* border: 1px solid #e9e7e7; */
     /* padding: 25px; */
     font-size: 15px;
@@ -1260,7 +1285,7 @@ footer p {
 
 
 
-.barSide .column{
+.barSide .column {
     padding: 25px;
     border: 1px solid #e9e7e7;
     border-radius: 5px;
@@ -1275,7 +1300,7 @@ footer p {
     margin-bottom: 10px;
 }
 
-.barSide .categoryList{
+.barSide .categoryList {
     /* border: 1px solid #e9e7e7; */
 
     line-height: 35px;
@@ -1286,12 +1311,13 @@ footer p {
 }
 
 
-.barSide .categoryList .subList{
+.barSide .categoryList .subList {
     display: none;
     padding: 0px 10px;
     line-height: 38px;
 }
-.barSide .categoryList .categoryTitle{
+
+.barSide .categoryList .categoryTitle {
     color: var(--dark-color);
     font-weight: 500;
     font-size: 16px;
@@ -1302,17 +1328,17 @@ footer p {
 
 
 
-.barSide .categoryList .categoryTitle.active{
+.barSide .categoryList .categoryTitle.active {
     color: var(--primary-color) !important;
 }
 
-.barSide .categoryList .categoryTitle.active i{
+.barSide .categoryList .categoryTitle.active i {
     font-size: 15px;
     color: var(--primary-color) !important;
     transform: rotate(90deg);
 }
 
-.barSide .categoryList .categoryTitle i{
+.barSide .categoryList .categoryTitle i {
     color: #6c757d96;
 }
 
@@ -1320,39 +1346,39 @@ footer p {
     display: block !important;
 }
 
-.filterList .filter{
+.filterList .filter {
     padding: 20px 0px;
     border-bottom: 1px solid #e9e7e7;
 
 }
 
-.filterList .filter:last-child{
+.filterList .filter:last-child {
     border-bottom: transparent;
 }
 
 
-.filterList .filter .headSide{
+.filterList .filter .headSide {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-    
+
 }
 
-.filter .headSide .title{
+.filter .headSide .title {
     font-size: 16px !important;
 }
 
 
-.filterList label{
+.filterList label {
     margin-bottom: 5px;
     font-size: 15px;
 }
 
-.filterList .filter input{
+.filterList .filter input {
     height: 40px;
 }
 
-.filterList .filter .title{
+.filterList .filter .title {
     font-weight: 500;
 }
 
@@ -1366,47 +1392,48 @@ footer p {
     margin-top: 7px;
 }
 
-.filterList .filter .list{
+.filterList .filter .list {
     line-height: 30px;
     max-height: 300px;
     overflow-y: scroll;
     padding: 0px 5px;
 }
 
-.filterList .filter .colors{
+.filterList .filter .colors {
     display: flex;
     flex-wrap: wrap;
     gap: 7px;
 }
 
-.filterList .filter .sizes{
+.filterList .filter .sizes {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
 }
 
 
-.filterList .filter .sizes .size{
+.filterList .filter .sizes .size {
     padding: 6px 14px;
     border-radius: 5px;
     border: 1px solid gray;
     cursor: pointer;
 }
 
-.filterList .filter .sizes .size.active{
+.filterList .filter .sizes .size.active {
     background-color: var(--primary-color);
     color: white;
     transition: .2s;
     border: 1px solid transparent;
 }
 
-.filterList .filter .sizes .size:hover{
+.filterList .filter .sizes .size:hover {
     background-color: var(--primary-color);
     color: white;
     transition: .2s;
     border: 1px solid transparent;
 }
-.filterList .filter .colors .color{
+
+.filterList .filter .colors .color {
     width: 30px;
     height: 30px !important;
     background: #c27e00;
@@ -1416,20 +1443,21 @@ footer p {
 
 }
 
-.filterList .filter .colors .color:hover{
+.filterList .filter .colors .color:hover {
     transition: .1s;
     border: 1px solid var(--primary-color);
 }
 
-.productList{
+.productList {
     padding: 0px 25px;
+    margin-bottom: 40px;
 }
 
-.productList .row{
+.productList .row {
     --bs-gutter-y: 1.5rem;
 }
 
-.productList .categoryBanner{
+.productList .categoryBanner {
     width: 100%;
     background-color: white;
     /* padding: 30px 80px; */
@@ -1440,14 +1468,15 @@ footer p {
 }
 
 
-.productList .categoryBanner .bannerCover{
+.productList .categoryBanner .bannerCover {
     position: relative;
     width: 100%;
     height: inherit;
     border-radius: inherit;
     top: 0;
 }
-.productList .categoryBanner img{
+
+.productList .categoryBanner img {
     position: absolute;
     width: 100%;
     object-fit: cover;
@@ -1471,15 +1500,48 @@ footer p {
     font-size: 14px;
 }
 
-.categoryBanner .bannerContent .title{
+
+.paginateSide {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin: 40px 0;
+    gap: 10px;
+}
+
+.paginateSide span {
+    padding: 10px 14px;
+    border-radius: 4px;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    transition: .15s;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.paginateSide span:hover {
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    color: white;
+}
+
+.paginateSide span.active {
+    color: white;
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    cursor: default;
+}
+
+.categoryBanner .bannerContent .title {
     font-size: 32px !important;
     width: 100%;
     font-weight: 600;
 }
 
-.categoryLabels{
+.categoryLabels {
     display: flex;
     flex-wrap: wrap;
+    --bs-gutter-y: unset !important;
 }
 
 .categoryLabel {
@@ -1493,15 +1555,16 @@ footer p {
     color: var(--dark-color);
 }
 
-.categoryLabel i{
+.categoryLabel i {
     margin-right: 15px;
     font-size: 28px;
 }
 
-.categoryLabel .content{
+.categoryLabel .content {
     font-size: 13.5px;
 }
-.categoryLabel .bannerTitle{
+
+.categoryLabel .bannerTitle {
     font-size: 16.5px;
     margin-bottom: 3px;
     color: var(--dark-color);
@@ -1509,39 +1572,244 @@ footer p {
 }
 
 
-.loginSide{
+.loginSide {
     width: 50%;
     margin: 0 auto;
     padding: 30px 0px;
 }
 
-.loginSide .headSide{
+.loginSide .headSide {
     text-align: center;
     margin-bottom: 10px;
 }
 
-.loginSide .headSide i{
+.loginSide .headSide i {
     font-size: 40px;
     color: var(--primary-color);
     margin-bottom: 10px;
 }
-.loginSide .headSide h4{
+
+.loginSide .headSide h4 {
     font-weight: 600;
 }
 
-.loginSide .group{
+.loginSide .group {
     margin: 20px 0px;
 }
 
-.loginSide .group label{
+.loginSide .group label {
     margin-bottom: 8px;
 }
 
-.loginSide .bodySide .action{
+.loginSide .bodySide .action {
     width: max-content;
     margin: 0 auto;
 }
 
-.loginSide .bodySide button{
+.loginSide .bodySide button {
     margin: 0px 5px;
+}
+
+
+
+
+/* Big */
+@media screen and (min-width:1024px) {}
+
+/* Tablet */
+@media screen and (min-width:768px) and (max-width:1023px) {
+
+    .container,
+    .container-md,
+    .container-sm {
+        max-width: 800px;
+    }
+}
+
+/* Phone */
+
+@media screen and (max-width:390px) {
+
+    .header .sub-menu .smenu-column:not(:first-child) {
+        margin-top: 40px;
+    }
+
+    .basketProducts .products {
+        height: 85% !important;
+    }
+
+    .basketSide .actions a {
+        padding: 10px;
+    }
+}
+
+@media screen and (min-width:390px) and (max-width:767px) {
+
+    .header .navbar {
+        padding-top: 30px;
+        padding-bottom: 0;
+        gap: 5px;
+        justify-content: space-around;
+    }
+
+    .header .navbar .brand {
+        display: block;
+        width: 100%;
+    }
+
+    .header .navbar .brand img {
+        width: 60%;
+        margin: 0 auto;
+        display: block;
+    }
+
+
+    .header .topbar a i {
+        margin-right: 8px;
+    }
+
+    .navbar .toolbars {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+
+    .header .navbar .toolbars .loginBtn {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 12px 25px;
+        margin-left: 20px;
+        border-radius: 5px;
+        flex: 1;
+    }
+
+
+    .barSide .categoryList {
+        max-height: 345px;
+
+    }
+
+    .productList .categoryBanner {
+        display: none;
+    }
+
+
+    .header .topbar .content {
+
+        padding: 10px 0px;
+    }
+
+    .loginSide {
+        width: 85%;
+    }
+
+    .loginSide .headSide {
+        margin-bottom: 25px;
+    }
+
+    .header .navbar .searchSide .resultSide .product {
+        flex-wrap: nowrap;
+    }
+
+    .header .navbar .searchSide {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .footerUp {
+        gap: 40px;
+    }
+
+    .productSingle .price {
+        font-size: 21px;
+    }
+
+    .productSingle .mainItems {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 15px;
+    }
+
+    .basketSide .actions {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .productSingle .mainItems .quantity {
+        width: 50%;
+    }
+
+    .productSingle .productTools {
+        margin: 0 auto !important;
+        gap: 10px;
+    }
+
+    .productSingle .productTools a {
+        padding: 15px 15px;
+        margin: 0px 5px;
+    }
+
+
+    .productList .categoryBanner .bannerContent {
+        width: 100%;
+    }
+
+    .footerMedia {
+        margin-top: 20px;
+    }
+
+    .productSingle {
+        gap: 30px;
+    }
+
+    .css-qzfydd {
+        padding: 40px !important;
+        width: 100% !important;
+    }
+
+
+
+
+
+    .header .sub-menu .smenu-column:not(:first-child) {
+        margin-top: 40px;
+    }
+
+
+    .basketProducts .products {
+        height: 90% !important;
+    }
+
+    .basketProduct {
+        flex-wrap: wrap;
+        gap: 22px !important;
+        margin-bottom: 15px;
+    }
+
+
+
+    .basketProduct .productAction {
+        width: 100%;
+    }
+
+    .basketProduct .productCover {
+        width: 20%;
+    }
+
+    .basketProduct .productToolbar {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+    }
+
+    .basketProduct .productDetails {
+        width: 60% !important;
+    }
+
+    .basketProduct .productPrice {
+        text-align: right;
+    }
+
 }

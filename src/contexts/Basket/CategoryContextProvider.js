@@ -1,26 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useSnackbar } from 'notistack';
+import { arrayToTree } from 'performant-array-to-tree';
 
 export const CategoryContext = React.createContext();
 
 function CategoryContextProvider(props) {
-
-    const nestChilds = (object) => {
-        const list = [];
-        object.forEach((i, index) => {
-            i.depth = index
-            if (i.parent_id) {
-                const parent = object.find(({ id }) => id === i.parent_id);
-                if (!parent.hasOwnProperty('children')) { parent.children = []; parent.parent = []; };
-                parent.children.push(i);
-                delete i.parent;
-            } else {
-                list.push(i);
-            }
-        })
-        return list;
-    }
 
     const [getCategories, setCategories] = useState({ categories: [], normalCategories: [] })
     const { enqueueSnackbar } = useSnackbar();
@@ -29,8 +14,8 @@ function CategoryContextProvider(props) {
         axios.get(`${process.env.REACT_APP_API_HOST}/categories`).then((res) => {
             if (res.status === 200) {
                 const { data } = res;
-                const treeCats = nestChilds(data);
-                setCategories({ categories: treeCats, normalCategories: data });
+                const tree = arrayToTree(data,  { dataField: null,id: "id", parentId: "parent_id" });
+                setCategories({ categories: tree, normalCategories: data });
             }
         }).catch((error) => {
             return enqueueSnackbar('Kategoriya API Xətası: ' + error.code, { variant: 'error' })

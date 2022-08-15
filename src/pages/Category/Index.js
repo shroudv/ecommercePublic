@@ -6,20 +6,18 @@ import ProductStandartComponent from '../../components/ProductStandartComponent'
 import ProductGenLoader from '../../components/Loader/ProductGenLoader';
 import { useSnackbar } from 'notistack';
 import LabelSingle from './components/LabelSingle';
-import slugify from 'react-slugify';
 export default function Index() {
 
     const _categories = useContext(CategoryContext).categories;
     const categoryNormal = useContext(CategoryContext).normalCategories;
     const [getCategory, setCategory] = useState({ categories: [], selectedCategory: '', showMore: 0 });
-    const [getProduct, setProduct] = useState({ products: [] });
+    const [getProduct, setProduct] = useState({ products: [], currentPage: 1, maxPage: 1 });
     const [getLoader, setLoader] = useState(false);
     const [getModels, setModels] = useState({ models: [] });
     const [getForm, setForm] = useState({ min: '', max: '', size: [], colors: [] })
 
     const { topcategory, subcategory } = useParams();
     const location = useLocation();
-    const navigate = useNavigate();
 
     const third = new URLSearchParams(location.search).get('third')
     const { enqueueSnackbar } = useSnackbar();
@@ -35,8 +33,6 @@ export default function Index() {
 
     /*eslint-disable */
 
-
-
     useEffect(() => {
         let lastCat;
         if (!subcategory && !third) {
@@ -48,26 +44,19 @@ export default function Index() {
         }
 
         setCategory({ ...getCategory, categories: _categories })
-
         categoryNormal.filter((cat) => cat.slug == lastCat ? setCategory((prev) => ({ ...prev, selectedCategory: cat })) : null)
-
         setLoader(true)
 
         getCategory.selectedCategory ?
-            axios.get(`${process.env.REACT_APP_API_HOST}/products/?category=${getCategory.selectedCategory.id}`).then(({ data }) => {
-                setProduct({ ...getProduct, products: data.result })
-                
-                setLoader(false)
-            }).catch(err => {
-                return enqueueSnackbar('Kategoriya API Xətası: ' + err.code, { variant: 'error' })
-            })
+            axios.get(`${process.env.REACT_APP_API_HOST}/products/?category=${getCategory.selectedCategory.id}&page=${getProduct.currentPage}`)
+                .then(({ data }) => {
+                    setProduct({ ...getProduct, products: data.result, maxPage: data.lastPage })
+                    setLoader(false)
+                }).catch(err => {
+                    return enqueueSnackbar('Kategoriya API Xətası: ' + err.code, { variant: 'error' })
+                })
             : null
-
-        if (categoryNormal.length > 0) {
-            const asa = categoryNormal.filter((cat) => cat.slug == lastCat ? cat : null)
-            // asa.length > 0 ? null : navigate('/404')
-        }
-    }, [categoryNormal, _categories, location, getCategory.selectedCategory])
+    }, [categoryNormal, _categories, location, getCategory.selectedCategory, getProduct.currentPage])
 
 
     useEffect(() => {
@@ -91,17 +80,11 @@ export default function Index() {
         setLoader(true)
         getCategory.selectedCategory ?
             axios.get(`${process.env.REACT_APP_API_HOST}/products/?category=${getCategory.selectedCategory.id}`, {
-                params: {
-                    min: getForm.min,
-                    max: getForm.max,
-                    size: getForm.size,
-                }
+                params: { min: getForm.min, max: getForm.max, size: getForm.size, }
             }).then(({ data }) => {
-                setProduct({ ...getProduct, products: data.result })
+                setProduct((prev) => ({ ...prev, products: data.result }))
                 setLoader(false)
-            }).catch(err => {
-                return enqueueSnackbar('Kategoriya API Xətası: ' + err.code, { variant: 'error' })
-            })
+            }).catch(err => enqueueSnackbar('Kategoriya API Xətası: ' + err.code, { variant: 'error' }))
             : null
     }, [getForm, getCategory.selectedCategory])
 
@@ -139,7 +122,7 @@ export default function Index() {
     return (
         <div className='wrapper container'>
             <div className="row">
-                <div className="col-3 barSide">
+                <div className="col-xl-3 col-12 barSide">
                     <div className="column">
                         <h5>Bütün Kategoriyalar</h5>
                         <div className="categoryList">
@@ -194,39 +177,10 @@ export default function Index() {
 
                                 </div>
                             </div>
-                            <div className="filter">
-                                <div className="headSide">
-                                    <label className='title' htmlFor="">Rənglər</label>
-                                    <span className='action' htmlFor=""><i className="fa-regular fa-arrow-down"></i></span>
-                                </div>
-                                <div className="colors">
-                                    <div className="color"></div>
-                                </div>
-                            </div>
-                            <div className="filter">
-                                <div className="headSide">
-                                    <label className='title' htmlFor="">Ekran Növü</label>
-                                    <span className='action' htmlFor=""><i className="fa-regular fa-arrow-down"></i></span>
-                                </div>
-                                <div className="list">
-                                    <div className="form-check">
-                                        <input className="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault" />
-                                        <label className="form-check-label" htmlFor="flexCheckDefault">Amoled</label>
-                                    </div>
-                                    <div className="form-check">
-                                        <input className="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault" />
-                                        <label className="form-check-label" htmlFor="flexCheckDefault">LCD</label>
-                                    </div>
-                                    <div className="form-check">
-                                        <input className="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault" />
-                                        <label className="form-check-label" htmlFor="flexCheckDefault">TN</label>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
-                <div className="col-9 productList ">
+                <div className="col-xl-9 col-12 productList ">
                     <div className="categoryBanner">
                         <div className="bannerCover">
                             <img src="https://st3.depositphotos.com/2234329/18161/i/1600/depositphotos_181612646-stock-photo-similar-to-iphone-x-smartphones.jpg" alt="" />
@@ -268,26 +222,46 @@ export default function Index() {
                                         className='d-inline-block mx-auto btn btn-secondary px-4'>Daha Çox
                                     </span>
                                 </div>
-                            : null
+                                : null
                         }
                     </div>
                     {
                         getLoader == true ?
                             <ProductGenLoader count={6} />
                             :
-                            <div className='row'>
+                            <>
+                                <div className='row'>
+                                    {
+                                        getProduct.products && getProduct.products.length > 0 ?
+                                            getProduct.products.map((product, i) => {
+                                                return <ProductStandartComponent key={i} grid={3} product={product} />
+                                            })
+                                            :
+                                            <div className="notFound text-center text-muted mt-3">
+                                                <i className="fa-regular fa-basket-shopping-simple fa-3x text-muted"></i>
+                                                <h2 className='title'>Məhsul Tapılmadı</h2>
+                                            </div>
+                                    }
+                                </div>
                                 {
-                                    getProduct.products && getProduct.products.length > 0 ?
-                                        getProduct.products.map((product, i) => {
-                                            return <ProductStandartComponent key={i} grid={3} product={product} />
-                                        })
-                                        :
-                                        <div className="notFound text-center text-muted mt-3">
-                                            <i className="fa-regular fa-basket-shopping-simple fa-3x text-muted"></i>
-                                            <h2 className='title'>Məhsul Tapılmadı</h2>
+                                    getProduct.maxPage > 1 ?
+                                        <div className="paginateSide">
+                                            {
+                                                [...Array(getProduct.maxPage)].map((elementInArray, index) =>
+                                                    <span
+                                                        key={index}
+                                                        className={`${getProduct.currentPage === index + 1 ? 'active' : ''}`}
+                                                        onClick={() => setProduct((prev) => ({ ...prev, currentPage: index + 1 }))}>
+                                                        {index + 1}
+                                                    </span>
+                                                )
+                                            }
                                         </div>
+                                        : null
+
                                 }
-                            </div>
+
+                            </>
                     }
                 </div>
             </div>

@@ -1,17 +1,13 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import { CategoryContext } from '../contexts/Basket/CategoryContextProvider';
 import { formatMoney } from '../Helpers/GeneralHelper'
+
 export default function ProductStandartComponent(props) {
-    const { normalCategories } = useContext(CategoryContext)
-    const findParent = normalCategories.find((cat) => {
-        return cat.id === props.product.category.parentId
-    })
 
     const productUrl = `/catalog${props.product.url.join('')}/${props.product.slug}`;
 
     return (
-        <div className={`${props.grid === 3 ? 'col-4' : 'col-3'}`}>
+        <div className={`${props.grid === 3 ? 'col-xl-4' : 'col-xl-3'} col-sm-6 col-12`}>
             <div className="product">
                 <div className='productDetails'>
                     <Link className="product-title" to={productUrl}>{props.product.title}</Link>

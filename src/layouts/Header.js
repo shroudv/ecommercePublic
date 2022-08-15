@@ -4,11 +4,12 @@ import logo from '../assets/img/logo.png';
 import { MuiDrawerContext } from '../components/Basket/MuiBasketDrawer';
 import SearchBarComponent from '../components/SearchBar/SearchBarComponent';
 import { BasketContext } from '../contexts/Basket/BasketContextProvider';
-import { useSnackbar } from 'notistack';
 import { CategoryContext } from '../contexts/Basket/CategoryContextProvider';
+import { AuthProviderContext } from '../contexts/AuthProvider';
 
 export default function Header() {
 
+  const getAuth = useContext(AuthProviderContext);
   const { setOpen } = useContext(MuiDrawerContext);
   const { getBasket } = useContext(BasketContext);
   const [getCategories, setCategories] = useState({ categories: [] })
@@ -26,16 +27,19 @@ export default function Header() {
     <>
       <header className="header">
         <div className="topbar">
-          <div className="content container">
-            <div className="contacts">
-              <Link to="tel:+994557700580"><i className="fa-solid fa-phone"></i> +994557700580</Link>
-              <Link to="mailto:spport@ulc.az"><i className="fa-solid fa-phone"></i> spport@ulc.az</Link>
-            </div>
-            <div className="actions">
-              <Link to="/"><i className="fa-solid fa-location-arrow"></i> Store Locations</Link>
-              <Link to="/"><i className="fa-regular fa-truck"></i> Track Your Order</Link>
+          <div className="container">
+            <div className="content">
+              <div className="contacts">
+                <Link to="tel:+994557700580"><i className="fa-solid fa-phone"></i> +994557700580</Link>
+                <Link to="mailto:spport@ulc.az"><i className="fa-solid fa-phone"></i> spport@ulc.az</Link>
+              </div>
+              <div className="actions">
+                <Link to="/"><i className="fa-solid fa-location-arrow"></i> Store Locations</Link>
+                <Link to="/"><i className="fa-regular fa-truck"></i> Track Your Order</Link>
+              </div>
             </div>
           </div>
+
         </div>
         <div className="navbar container">
           <div className="brand">
@@ -52,10 +56,11 @@ export default function Header() {
                 <span className=''> {getBasket.products ? getBasket.products.length : 0}</span>
               </div>
             </Link>
-            <Link className="loginBtn" to={'/auth'}><i className="fa-regular fa-user"></i> Hesabım</Link>
+            <Link className="loginBtn" to={'/auth'}><i className="fa-regular fa-user"></i>  {getAuth ? getAuth.name[0] + '.' + getAuth.surname : 'Hesabım'}</Link>
           </div>
           <ul className="nav-links">
             {
+              getCategories.categories ?
               getCategories.categories.map((category, i) => {
                 return (
                   <li key={i + 1} className="nav-link"
@@ -71,12 +76,12 @@ export default function Header() {
                                 return (
                                   subcat.children && subcat.children.length > 0 ?
                                     <div key={i} className="smenu-column">
-                                      <Link to={`/catalog/${category.slug}/${subcat.slug}`} className='smenuTitle'>{subcat.title}</Link>
+                                      <Link onClick={()=>hoverHandler(false)} to={`/catalog/${category.slug}/${subcat.slug}`} className='smenuTitle'>{subcat.title}</Link>
                                       <ul className="subnav-links">
                                         {
                                           subcat.children.map((third, i) => {
                                             return <li key={i} className="nav-link">
-                                              <Link to={`/catalog/${category.slug}/${subcat.slug}?third=${third.slug}`}>{third.title}</Link>
+                                              <Link onClick={()=>hoverHandler(false)} to={`/catalog/${category.slug}/${subcat.slug}?third=${third.slug}`}>{third.title}</Link>
                                             </li>
                                           })
                                         }
@@ -93,6 +98,8 @@ export default function Header() {
                   </li>
                 )
               })
+
+              :null
             }
           </ul>
         </div>

@@ -4,7 +4,9 @@ import { useSnackbar } from "notistack";
 
 
 export const formatMoney = (money) => {
-    return Number(money).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' ₼';
+    const num=Number(money).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+
+   return num.split('.00') ? num.split('.00')[0] + ' ₼' : num + ' ₼';
 }
 
 export const loaderAnimation = () => {

@@ -55,21 +55,22 @@ export default function Single() {
 
   /*eslint-disable */
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_HOST}/products`).then((res) => {
-      if (res.status === 200) {
-        const { data } = res;
-        setOtherProduct({ products: data.result })
-      } else {
-        enqueueSnackbar('API Xətası', { variant: 'error' })
-      }
-    }).catch((error) => {
-      return enqueueSnackbar('Digər Məhsullar API Xətası: ' + error.code, { variant: 'error' })
-    });
+    // axios.get(`${process.env.REACT_APP_API_HOST}/products`).then((res) => {
+    //   if (res.status === 200) {
+    //     const { data } = res;
+    //     setOtherProduct({ products: data.result })
+    //   } else {
+    //     enqueueSnackbar('API Xətası', { variant: 'error' })
+    //   }
+    // }).catch((error) => {
+    //   return enqueueSnackbar('Digər Məhsullar API Xətası: ' + error.code, { variant: 'error' })
+    // });
 
     axios.get(`${process.env.REACT_APP_API_HOST}/products/${slug}`).then((res) => {
       if (res.status === 200) {
         const { data } = res;
-        Object.keys(data).length > 0 ? setProduct({ ...getProduct, product: data }) : null
+        Object.keys(data.products).length > 0 ? setProduct({ ...getProduct, product: data.products }) : null
+        Object.keys(data.otherProducts).length > 0 ? setOtherProduct({ products: data.otherProducts }) : null
       }
     }).catch((error) => {
       return enqueueSnackbar('Məhsul Səhifəsi API Xətası: ' + error.code, { variant: 'error' })
@@ -84,12 +85,12 @@ export default function Single() {
         {
           Object.keys(getProduct.product).length > 0 ?
             <>
-              <div className="col-5">
+              <div className="col-xl-5">
                 {
                   getProduct.product && getProduct.product.gallery && getProduct.product.gallery.length > 0 ? <Galleries galleries={getProduct.product.gallery} selectedGallery={getProduct.selectedGallery} showGallery={showGallery} /> : null
                 }
               </div>
-              <div className="col-7 productDetails px-4 pt-2">
+              <div className="col-xl-7 productDetails px-4 pt-2">
                 {
                   getProduct.product ?
                     <ProductDetails state={getProduct} actions={{ setModelHandler, decQuantity, addQuantity, changeHandler, addBasketHandler }} />
@@ -108,11 +109,7 @@ export default function Single() {
             <div className="products row row-cols-1 row-cols-lg-4 row-cols-md-2 g-4">
               {
                 getOtherProduct ?
-                  getOtherProduct.products.map((product, i) => {
-                    return product.slug !== getProduct.product.slug ?
-                      <ProductStandartComponent key={i} product={product} />
-                      : null
-                  })
+                  getOtherProduct.products.map((product, i) =>  <ProductStandartComponent key={i} product={product} />)
                   : null
               }
             </div>

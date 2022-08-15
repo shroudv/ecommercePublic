@@ -8,7 +8,7 @@ export default class Footer extends Component {
       <footer>
         <div className="container">
           <div className="footerUp">
-            <div className="column col-3">
+            <div className="column col-12 col-xl-3">
               <div className="footer-brand">
                 <img src={logo} alt="" />
               </div>
@@ -25,7 +25,7 @@ export default class Footer extends Component {
                 </div>
               </div>
             </div>
-            <div className="column col-3">
+            <div className="column col-12 col-xl-3">
               <div className="title">
                 <h4>Bizimlə Əlaqə</h4>
               </div>
@@ -44,7 +44,7 @@ export default class Footer extends Component {
                 </p>
               </div>
             </div>
-            <div className="column col-3">
+            <div className="column col-12 col-xl-3">
               <div className="title">
                 <h4>Səhifələr</h4>
               </div>
@@ -65,7 +65,7 @@ export default class Footer extends Component {
                 </ul>
               </div>
             </div>
-            <div className="column col-3">
+            <div className="column col-12 col-xl-3">
               <div className="titel">
                 <h4>Məlumat Mərkəzi</h4>
               </div>

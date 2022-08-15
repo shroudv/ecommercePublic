@@ -9,7 +9,9 @@ import ScrollComponent from './components/ScrollComponent';
 import { SnackbarProvider } from 'notistack';
 import Page404 from './pages/Error/Page404';
 import Auth from './pages/Auth/Auth';
+
 function App() {
+
   return (
     <SnackbarProvider maxSnack={3}>
       <Master>

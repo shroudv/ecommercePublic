@@ -29,7 +29,7 @@ export default function Index() {
           </div>
         </div>
       </section>
-      <WeeklyDiscount />
+      {/* <WeeklyDiscount /> */}
     </>
   )
 }
